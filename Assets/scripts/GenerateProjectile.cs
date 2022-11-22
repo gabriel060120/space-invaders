@@ -5,6 +5,7 @@ using UnityEngine;
 public class GenerateProjectile : MonoBehaviour
 {
     public GameObject projectile;
+    private float timer = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +15,13 @@ public class GenerateProjectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        timer += Time.deltaTime;
+        if(timer > 1)
+        {
+            Instantiate(projectile, transform.position, transform.rotation);
+            timer = 0;
+        }
+        if (Input.GetMouseButtonDown(0))
         {
             Instantiate(projectile, transform.position, transform.rotation);
         }
