@@ -6,17 +6,11 @@ public class GenerateProjectile : MonoBehaviour
 {
     public GameObject projectile;
     private float timer = 0;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    public float delay = 0.5f;
     void Update()
     {
         timer += Time.deltaTime;
-        if(timer > 1)
+        if(timer >= delay)
         {
             Instantiate(projectile, transform.position, transform.rotation);
             timer = 0;

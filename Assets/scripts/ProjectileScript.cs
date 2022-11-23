@@ -5,12 +5,8 @@ using UnityEngine;
 public class ProjectileScript : MonoBehaviour
 {
     private float velocity = 12.0f;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject explosionAnim;
+    public GameObject explosionLocation;
 
     // Update is called once per frame
     void Update()
@@ -19,8 +15,9 @@ public class ProjectileScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.CompareTag("Player"))
+        if (!other.CompareTag("Player") && !other.CompareTag("Projectile"))
         {
+            Instantiate(explosionAnim, explosionLocation.transform.position, explosionLocation.transform.rotation);
             Destroy(this.gameObject);
         }
     }
