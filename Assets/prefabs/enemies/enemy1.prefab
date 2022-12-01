@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 417722460720858416}
   - component: {fileID: 6252325024575868784}
   - component: {fileID: 1121878429}
+  - component: {fileID: 955204508}
   m_Layer: 0
   m_Name: enemy1
   m_TagString: Enemy
@@ -146,6 +147,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   verticalDirection: 1
-  horizontalDirection: 1
+  horizontalDirection: -1
   verticalVelocity: 2
   horizontalVelocity: 2
+  minHorizontalRange: 0
+  maxHorizontalRange: 0
+  randomHorizontalPositionMax: 0
+  randomHorizontalPositionMin: 0
+--- !u!50 &955204508
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417722460720858417}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4

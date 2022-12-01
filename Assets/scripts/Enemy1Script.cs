@@ -8,13 +8,15 @@ public class Enemy1Script : MonoBehaviour
     public int horizontalDirection = -1;
     public float verticalVelocity = 2;
     public float horizontalVelocity = 2;
-    public Transform minHorizontalRange;
-    public Transform maxHorizontalRange;
+    private float minHorizontalRange;
+    private float maxHorizontalRange;
     public float randomHorizontalPositionMax;
     public float randomHorizontalPositionMin;
 
     void Start()
     {
+        minHorizontalRange = 0f;
+        maxHorizontalRange = 8f;
         RandomPositionMin();
         RandomPositionMax();
     }
@@ -23,18 +25,24 @@ public class Enemy1Script : MonoBehaviour
     void Update()
     {
         transform.Translate(horizontalDirection * horizontalVelocity * Time.deltaTime, verticalDirection * verticalVelocity * Time.deltaTime,0);
-
-        if(horizontalDirection < 0 && transform.position.x <= randomHorizontalPositionMin)
-        {
-            horizontalDirection = 1;
-            Debug.Log(horizontalDirection);
-            RandomPositionMin();
-        }
-        if (horizontalDirection > 0 && transform.position.x >= randomHorizontalPositionMax)
+        if(transform.position.x > 8)
         {
             horizontalDirection = -1;
-            RandomPositionMax();
+        } else
+        {
+            if (horizontalDirection < 0 && transform.position.x <= randomHorizontalPositionMin)
+            {
+                horizontalDirection = 1;
+                Debug.Log(horizontalDirection);
+                RandomPositionMin();
+            }
+            if (horizontalDirection > 0 && transform.position.x >= randomHorizontalPositionMax)
+            {
+                horizontalDirection = -1;
+                RandomPositionMax();
+            }
         }
+
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -45,12 +53,12 @@ public class Enemy1Script : MonoBehaviour
     }
     private void RandomPositionMin()
     {
-        randomHorizontalPositionMin = Random.Range(minHorizontalRange.position.x, transform.position.x);
+        randomHorizontalPositionMin = Random.Range(minHorizontalRange, transform.position.x) + 1;
         Debug.Log("randomMin: " + randomHorizontalPositionMin);
     }
     private void RandomPositionMax()
     {
-        randomHorizontalPositionMax = Random.Range(transform.position.x, maxHorizontalRange.position.x);
+        randomHorizontalPositionMax = Random.Range(transform.position.x, maxHorizontalRange) - 1;
         Debug.Log("randomMin: " + randomHorizontalPositionMin);
 
     }
