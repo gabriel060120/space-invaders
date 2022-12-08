@@ -35,8 +35,8 @@ public class ProjectileScript : MonoBehaviour
             if (!other.CompareTag("Enemy") && !other.CompareTag("EnemyProjectile") && !other.CompareTag("limit"))
             {
                 Instantiate(hitToProjectile, transform.position, transform.rotation);
-                if(other.CompareTag("Player"))
-                    Application.Quit();
+                if (other.CompareTag("Player"))
+                    Time.timeScale = 0;
                 Destroy(other.gameObject);
                 Destroy(this.gameObject);
             }
