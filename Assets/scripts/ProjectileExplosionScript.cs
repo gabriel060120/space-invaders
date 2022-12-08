@@ -5,6 +5,7 @@ using UnityEngine;
 public class ProjectileExplosionScript : MonoBehaviour
 {
     private float timer;
+    public float timeAnimation = 0.7f;
 
     void Start()
     {
@@ -14,7 +15,7 @@ public class ProjectileExplosionScript : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if(timer > 0.7)
+        if(timer > timeAnimation)
         {
             Destroy(gameObject);
         }

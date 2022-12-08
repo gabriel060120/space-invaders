@@ -11,12 +11,15 @@ public class Enemy2Script : MonoBehaviour
 
     public GameObject projectile;
 
+
+
     private float timer;
     public float delay = 1f;
     // Start is called before the first frame update
     void Start()
     {
         timer = 0f;
+
     }
 
     // Update is called once per frame
@@ -33,5 +36,9 @@ public class Enemy2Script : MonoBehaviour
 
             timer = 0;
         }
+
+
     }
+
+
 }
